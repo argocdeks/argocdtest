@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    path: manifests
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: web
+        image: nginx:alpine
+        ports:
+        - name: http
+          containerPort: 80
+      - name: db
+        image: postgres:alpine
+        env:
+        - name: POSTGRES_DB
+          value: demo
+        - name: POSTGRES_USER
+          value: demo
+        - name: POSTGRES_PASSWORD
+          value: demo
+        ports:
+        - name: db
+          containerPort: 5432

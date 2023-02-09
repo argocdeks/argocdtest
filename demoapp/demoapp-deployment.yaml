@@ -20,7 +20,7 @@ spec:
         - name: my-application
           image: my-application:1.0
           ports:
-            - containerPort: 8080
+            - containerPort: 8090
           env:
             - name: DB_HOST
               value: my-database

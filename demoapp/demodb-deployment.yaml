@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-database
-          image: mysql-server:5.7
+          image: mysql-server:latest
           ports:
             - containerPort: 3306
       imagePullSecrets:

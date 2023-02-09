@@ -14,7 +14,7 @@ spec:
     spec:
       initContainers:
         - name: wait-for-db
-          image: busybox
+          image: busybox:latest
           command: ['sh', '-c', 'until nslookup my-database; do echo waiting for db; sleep 2; done;']
       containers:
         - name: my-application

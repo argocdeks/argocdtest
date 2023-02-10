@@ -18,7 +18,7 @@ spec:
           command: ['sh', '-c', 'until nslookup my-database; do echo waiting for db; sleep 2; done;']
       containers:
         - name: my-application
-          image: my-application:1.0
+          image: busybox:latest
           ports:
             - containerPort: 8090
           env:

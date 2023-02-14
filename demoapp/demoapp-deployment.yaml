@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-application
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: my-application
@@ -12,7 +12,7 @@ spec:
       labels:
         app: my-application
     spec:
-      initContainers:
+     # initContainers:
      #   - name: wait-for-db
        #   image: busybox:latest
        #   command: ['sh', '-c', 'until nslookup my-database; do echo waiting for db; sleep 2; done;']
@@ -21,8 +21,9 @@ spec:
           image: appache:latest
           ports:
             - containerPort: 8090
-          env:
-            - name: DB_HOST
-              value: my-database
-      imagePullSecrets:
+        #  env:
+       #     - name: DB_HOST
+       #       value: my-database
+      #imagePullSecrets:
         - name: my-registry-secret
+#

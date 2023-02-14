@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-database
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-database
+  template:
+    metadata:
+      labels:
+        app: my-database
+    spec:
+      containers:
+        - name: my-database
+          image: mysql/mysql-server:latest
+          ports:
+            - containerPort: 3306
+      imagePullSecrets:
+        - name: my-registry-secret

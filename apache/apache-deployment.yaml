@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apache
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: https://github.com/example/apache.git
+    targetRevision: HEAD
+    path: .
+    helm:
+      values:
+        replicaCount: 3
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  health: 
+    path: /healthz
+    port: 80
+  syncOptions:
+    - Validate=false

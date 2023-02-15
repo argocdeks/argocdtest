@@ -23,5 +23,5 @@ spec:
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:
-              name: my-secret1
+              name: my-madhan
               key: secret-key
